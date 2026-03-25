@@ -2,12 +2,13 @@
 
 **Lab. Report \#5 – Software Reliability Assessment**
 
-| Group \#:       |   |
-|-----------------|---|
-| Student Names:  |   |
-|                 |   |
-|                 |   |
-|                 |   |
+| Group \#:  9    |
+| -------------- |
+| Josral Frederick |
+| Amielle El Makhzoumi |
+| Fatma Alzubaidi | 
+| Faris Janjua | 
+| Erioluwa Olubadejo | 
 
 # Introduction
 
