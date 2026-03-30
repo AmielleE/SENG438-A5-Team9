@@ -15,6 +15,37 @@
 # 
 
 # Assessment Using Reliability Growth Testing 
+1. Reliability growth testing is a process where a system is tested over time and failures are identified and fixed. As testing progresses, the failure rate decreases and system reliability increases. Reliability growth models are used to estimate failure intensity, reliability, and mean time to failure based on observed failure data.
+2. Data preparation:The provided dataset (Failure Report 2) contains raw failure logs with failure times in seconds. However, C-SFRAT requires interval-based input data. Therefore, preprocessing was performed.
+
+First, the failure times were extracted and converted from seconds to minutes. Then, the time was divided into 1-hour intervals (60 minutes each). Each failure was assigned to its corresponding interval, and the number of failures (FC) per interval was computed.
+
+Since effort-related variables (E, F, C) were not provided, constant values of 1 were assumed for each interval.
+The final dataset was structured as follows:
+| T  | FC | E | F | C |
+|----|----|---|---|---|
+| 1  | 6  | 1 | 1 | 1 |
+| 2  | 7  | 1 | 1 | 1 |
+| 3  | 2  | 1 | 1 | 1 |
+| 4  | 6  | 1 | 1 | 1 |
+| 5  | 5  | 1 | 1 | 1 |
+| 6  | 6  | 1 | 1 | 1 |
+| 7  | 3  | 1 | 1 | 1 |
+| 8  | 4  | 1 | 1 | 1 |
+| 9  | 4  | 1 | 1 | 1 |
+| 10 | 2  | 1 | 1 | 1 |
+| 11 | 4  | 1 | 1 | 1 |
+| 13 | 4  | 1 | 1 | 1 |
+| 14 | 1  | 1 | 1 | 1 |
+| 16 | 1  | 1 | 1 | 1 |
+| 17 | 4  | 1 | 1 | 1 |
+| 18 | 3  | 1 | 1 | 1 |
+
+The results indicate that the system exhibits reliability growth, as the failure intensity decreases over time. This suggests that faults are being effectively identified and removed during testing. As a result, the system becomes more stable and reliable as testing progresses.
+
+3.Model estimation results: The failure intensity plot shows a decreasing trend, indicating that the system reliability improves as testing progresses. The reliability curve shows an increasing probability of failure-free operation over time. The mean time to failure (MTTF) also increases, indicating that failures occur less frequently as faults are removed.
+
+In conclusion, the GM model provided the best fit for the failure data and demonstrated clear reliability growth. The analysis showed that the system's reliability improves as testing progresses. Additionally, effort allocation results suggest that focusing on execution effort is the most effective approach for maximizing defect detection. Overall, the system shows promising reliability improvement trends.
 
 # Assessment Using Reliability Demonstration Chart 
 
