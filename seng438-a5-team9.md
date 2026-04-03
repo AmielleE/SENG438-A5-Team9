@@ -35,17 +35,31 @@ The final dataset was structured as follows:
 | 9  | 4  | 1 | 1 | 1 |
 | 10 | 2  | 1 | 1 | 1 |
 | 11 | 4  | 1 | 1 | 1 |
+| 12 | 0  | 1 | 1 | 1 |
 | 13 | 4  | 1 | 1 | 1 |
 | 14 | 1  | 1 | 1 | 1 |
+| 15 | 3  | 1 | 1 | 1 |
 | 16 | 1  | 1 | 1 | 1 |
 | 17 | 4  | 1 | 1 | 1 |
 | 18 | 3  | 1 | 1 | 1 |
+![Processed Failure Report 2 dataset loaded into C-SFRAT](chart.png)
+
+3. Model comparison: The processed dataset was analyzed in C-SFRAT using the baseline setting with covariates set to None. The candidate models were compared using AIC, BIC, and SSE. Based on the model comparison results, the two strongest models were GM and IFRGSB. GM was selected as the best overall model because it had the lowest AIC and BIC values, while IFRGSB was selected as the second-best model because it had the second lowest AIC and BIC values. Therefore, GM and IFRGSB were chosen as the top two models for the reliability growth analysis of Failure Report 2.
+![Model comparison results for Failure Report 2 in C-SFRAT](ModelComparison1.png)
+![Continuation of model comparison results for Failure Report 2 in C-SFRAT](ModelComparison2.png)
 
 The results indicate that the system exhibits reliability growth, as the failure intensity decreases over time. This suggests that faults are being effectively identified and removed during testing. As a result, the system becomes more stable and reliable as testing progresses.
 
-3.Model estimation results: The failure intensity plot shows a decreasing trend, indicating that the system reliability improves as testing progresses. The reliability curve shows an increasing probability of failure-free operation over time. The mean time to failure (MTTF) also increases, indicating that failures occur less frequently as faults are removed.
+4. Model estimation results: The failure intensity plot shows a decreasing trend, indicating that the system reliability improves as testing progresses. The reliability curve shows an increasing probability of failure free operation over time. The mean time to failure (MTTF) also increases, indicating that failures occur less frequently as faults are removed.
 
-In conclusion, the GM model provided the best fit for the failure data and demonstrated clear reliability growth. The analysis showed that the system's reliability improves as testing progresses. Additionally, effort allocation results suggest that focusing on execution effort is the most effective approach for maximizing defect detection. Overall, the system shows promising reliability improvement trends.
+In conclusion, the GM model provided the best fit for the failure data and demonstrated clear reliability growth. The analysis showed that the system's reliability improves as testing progresses. Overall, the system shows promising reliability improvement trends.
+
+5. Range analysis: For Failure Report 2, the full interval range from 1 to 18 was retained for the reliability growth analysis. The failure counts vary across the intervals, but there is no clearly isolated startup only region or obviously invalid portion of the dataset that should be removed before model fitting. Although the trend is not perfectly smooth, the full range still provides a reasonable basis for comparing candidate models and evaluating the overall reliability growth behavior of the system.
+
+6. Decision making given a target failure rate: Reliability growth analysis can support release or testing decisions by showing whether the observed failure behavior is moving toward an acceptable failure level. In the early intervals of Failure Report 2, the system experiences higher and more variable failure counts, which suggests that the software would not yet be ready if a low target failure rate were required. However, later intervals generally show lower and more stable failure counts, indicating that the system is improving as faults are found and removed. Therefore, if a target failure rate were specified, the decision would depend on whether the most recent failure behavior is low enough to satisfy that target. In this case, the results suggest that the system is improving, but it would still be important to compare the later stage failure behavior against the required reliability threshold before deciding that testing can stop or that the system is ready for release.
+
+7. Advantages and disadvantages of reliability growth analysis: One advantage of reliability growth analysis is that it uses observed failure data over time to show whether the system is improving as testing progresses. It also allows different models to be compared, which helps identify the model that best explains the failure behavior of the system. In addition, it can support decisions about software readiness by showing trends in failure intensity, reliability, and mean time to failure. However, reliability growth analysis also has limitations. It depends on the quality of the collected failure data and on how well the selected model fits the data. The results can also be affected by preprocessing choices, such as interval selection or assumptions made for missing effort variables. As a result, although reliability growth analysis is useful for understanding failure trends, its conclusions should still be interpreted carefully.
+
 
 # Assessment Using Reliability Demonstration Chart 
 
@@ -128,6 +142,7 @@ Disadvantages:
 - Does not model the growth or improvement of reliability over time since it is a snapshot assessment, not a trend analysis
 
 # Comparison of Results
+
 
 # Discussion on Similarity and Differences of the Two Techniques
 
