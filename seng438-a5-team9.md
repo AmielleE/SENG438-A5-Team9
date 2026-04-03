@@ -110,21 +110,23 @@ At this setting, the last failure point lands at approximately (5.5, 5) on the c
 
 ![MTTFmin RDC Plot](plot1.png)
 
-At MTTFmin, the failure points gradually move from the lower left toward the Accept region. The last point falls just inside the Accept boundary which indicates the SUT marginally meets the minimum reliability requirement. This is the minimum MTTF where we can consider the system acceptable given our risk parameters.
+At MTTFmin, the failure points gradually move from the lower left toward the Accept region. This occurs because the normalized failure time is calculated relative to the chosen MTTF, placing the points near the acceptance boundary. The last point falls just inside the Accept region, indicating that the SUT marginally meets the minimum reliability requirement. This confirms that this MTTF represents the boundary where the system transitions from unacceptable to acceptable.
 
 
 ### Plot 2 — 2× MTTFmin (Per Input Events = 87,000, MTTF = 5,438 seconds)
 
 ![2x MTTFmin RDC Plot](plot2.png)
 
-When the target MTTF is doubled to approximately 5,438 seconds, the failure points shift to the left on the chart and fall inside the yellow Continue Test region. This means the SUT does not meet this stricter reliability requirement. More testing and development would be needed before the system could be accepted at this higher MTTF target.
+When the target MTTF is doubled to approximately 5,438 seconds, the failure points shift to the left on the chart. This happens because increasing the MTTF reduces the normalized failure time (Tn), causing all points to move toward smaller values on the horizontal axis. As a result, the points fall within the Continue Test region rather than the Accept region, meaning the SUT does not meet this stricter reliability requirement. This demonstrates that higher MTTF targets are harder to satisfy.
 
 
 ### Plot 3 — 0.5× MTTFmin (Per Input Events = 21,750, MTTF = 1,359 seconds)
 
 ![0.5x MTTFmin RDC Plot](plot3.png)
 
-When the target MTTF is halved to around 1,359 seconds, the failure points shift far to the right and fall deep inside the green Accept region. This confirms that the SUT comfortably meets this more relaxed reliability target, with significant margin to spare.
+When the target MTTF is halved to around 1,359 seconds, the failure points shift significantly to the right on the chart. This occurs because decreasing the MTTF increases the normalized failure time, pushing the points toward larger values on the horizontal axis. As a result, the points fall well within the Accept region, indicating that the SUT easily meets this more relaxed reliability requirement. This shows that lower MTTF targets are easier to satisfy.
+
+Overall, the three scenarios clearly show how the choice of MTTF affects the reliability assessment. At 0.5× MTTFmin, the system easily satisfies the requirement, as all points fall well within the Accept region. At MTTFmin, the system just meets the minimum reliability threshold, with the final point lying on the boundary of acceptance. However, at 2× MTTFmin, the system no longer satisfies the requirement and falls into the Continue Test region. This confirms that MTTFmin is an appropriate boundary value, as it represents the highest MTTF for which the system is still considered acceptable.
 
 ---
 
@@ -146,6 +148,7 @@ Disadvantages:
 - Can not calculate exact quantitative reliability values since RDC only indicates whether the SUT is acceptable, not by how much
 - Limited to 16 data points which means it requires subsampling for larger datasets which can lose information
 - Does not model the growth or improvement of reliability over time since it is a snapshot assessment, not a trend analysis
+- The results are highly dependent on the selected MTTF value, meaning that poor parameter selection can lead to misleading conclusions.
 
 # Comparison of Results
 
