@@ -11,8 +11,9 @@
 | Erioluwa Olubadejo | 
 
 # Introduction
+This lab focused on evaluating software reliability using two techniques: reliability growth testing and the Reliability Demonstration Chart (RDC). Both use failure data, but they answer different questions. Reliability growth testing shows whether the system improves over time, while RDC checks whether it meets a target reliability requirement.
 
-# 
+We applied both techniques to the same dataset so the results could be compared directly. In Part 1, we converted the raw logs into interval based input for C-SFRAT and analyzed reliability growth. In Part 2, we used RDC-11 to identify the minimum acceptable MTTF and test different threshold values.
 
 # Assessment Using Reliability Growth Testing 
 1. Reliability growth testing is a process where a system is tested over time and failures are identified and fixed. As testing progresses, the failure rate decreases and system reliability increases. Reliability growth models are used to estimate failure intensity, reliability, and mean time to failure based on observed failure data.
@@ -151,13 +152,21 @@ Disadvantages:
 - The results are highly dependent on the selected MTTF value, meaning that poor parameter selection can lead to misleading conclusions.
 
 # Comparison of Results
+Both methods came to the same conclusion: the system is getting better, but whether it is good enough depends on the reliability target. In the growth analysis, the intensity of failures generally went down over time. The GM and IFRGSB models also said that the software was getting more stable as testing went on.
 
+The RDC results backed up that same general trend, but they were more strict about making decisions. At the minimum MTTF of about 2,718.75 seconds, the system was only just acceptable. The system was clearly acceptable when the target was relaxed, but when it was raised, it moved into the Continue Test area.
+
+The main difference is how the two methods show the result. Reliability growth testing looks at trends and shows that the software is getting better over time. RDC looks at acceptance based on a threshold and shows if the software is good enough for a certain goal.
 
 # Discussion on Similarity and Differences of the Two Techniques
+The main thing that both methods have in common is that they both use data on failures that have been seen to measure software reliability. In both cases, the quality of the conclusion depends on how good the data is and what assumptions were made during the analysis. Both can also help you decide if you need to do more tests.
 
+The main difference is what they are for. Reliability growth testing is analytical and model-based because it tries to figure out how reliability changes over time. RDC doesn't model growth; instead, it gives a direct accept, continue, or reject judgement based on a chosen reliability target. The amount of data that each method can use is another big difference. After we changed the raw failure times into intervals, C-SFRAT let us look at the whole processed dataset. RDC-11 made us cut the dataset down to 16 representative points. This made the analysis easier, but it also made it less detailed.
+
+There is also a difference in how people see things. It's easier to explain RDC because the chart regions make the result clear. Reliability growth testing necessitates enhanced reasoning as model fit, comparison metrics, and reliability trends must be accurately interpreted.
+
+In general, the two methods have the same goal but are different in how deep they go. Testing for growth in reliability is a better way to learn how reliability changes over time. RDC is a better way to tell if a certain reliability requirement has been met.
 # How the team work/effort was divided and managed
-
-# 
 
 # Difficulties encountered, challenges overcome, and lessons learned
 
