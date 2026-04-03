@@ -15,7 +15,8 @@
 # 
 
 # Assessment Using Reliability Growth Testing 
-1. Reliability growth testing is a process where a system is tested over time and failures are identified and fixed. As testing progresses, the failure rate decreases and system reliability increases. Reliability growth models are used to estimate failure intensity, reliability, and mean time to failure based on observed failure data.
+1. The Reliability Demonstration Chart (RDC) is used to evaluate whether the system under test (SUT) meets a specified reliability requirement in terms of Mean Time To Failure (MTTF). In the RDC, the vertical axis represents the cumulative number of failures (n), while the horizontal axis represents the normalized failure time (𝑇𝑛/MTTF)(Tn/MTTF). By plotting observed failure data on this chart, it is possible to determine whether the system falls within the Accept, Continue Test, or Reject regions under the chosen risk parameters. 
+
 2. Data preparation:The provided dataset (Failure Report 2) contains raw failure logs with failure times in seconds. However, C-SFRAT requires interval-based input data. Therefore, preprocessing was performed.
 
 First, the failure times were extracted and converted from seconds to minutes. Then, the time was divided into 1-hour intervals (60 minutes each). Each failure was assigned to its corresponding interval, and the number of failures (FC) per interval was computed.
