@@ -167,11 +167,18 @@ There is also a difference in how people see things. It's easier to explain RDC 
 
 In general, the two methods have the same goal but are different in how deep they go. Testing for growth in reliability is a better way to learn how reliability changes over time. RDC is a better way to tell if a certain reliability requirement has been met.
 # How the team work/effort was divided and managed
+Pair 1: Fatma & Amielle focused on preprocessing the dataset and running the reliability growth analysis in C-SFRAT & veriified the RDC plots, MTTF evaluation, and interpretation of the chart results prepared by pair 2.
+
+Pair 2: Josral, Faris & Erioluwa focused on the RDC plots, MTTF evaluation, and interpretation of the chart results & verified the work performed by pair 1.
+
+The lab report was a group effort curated with the efforts of everyone; it was also reviewed before final submission by the whole group.
 
 # Difficulties encountered, challenges overcome, and lessons learned
+The main difficulties were preprocessing raw failure data for C-SFRAT and understanding RDC-11’s less intuitive inputs and chart behavior. We overcame this by tracing how the data was transformed instead of treating the tools like black boxes, which taught us that reliability results depend heavily on assumptions, tool limits, and choosing the right method for the question being asked.
 
 ## For RDC tool
 
 One of the main challenges we encountered in this lab was understanding how the RDC-11 tool actually works in practice. The lab instructions were vague about how to correctly input failure data into the Excel sheet, and it was not clear what each column represented or how the normalization worked. In particular, understanding the relationship between the "Per Number of Input Events" cell and the resulting MTTF took significant trial and error to figure out.
 
 # Comments/feedback on the lab itself
+The lab was useful because it made us compare two reliability assessment techniques instead of just applying one, which made the analysis more meaningful.
