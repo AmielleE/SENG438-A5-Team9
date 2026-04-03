@@ -15,7 +15,7 @@
 # 
 
 # Assessment Using Reliability Growth Testing 
-1. The Reliability Demonstration Chart (RDC) is used to evaluate whether the system under test (SUT) meets a specified reliability requirement in terms of Mean Time To Failure (MTTF). In the RDC, the vertical axis represents the cumulative number of failures (n), while the horizontal axis represents the normalized failure time (𝑇𝑛/MTTF)(Tn/MTTF). By plotting observed failure data on this chart, it is possible to determine whether the system falls within the Accept, Continue Test, or Reject regions under the chosen risk parameters. 
+1. Reliability growth testing is a process where a system is tested over time and failures are identified and fixed. As testing progresses, the failure rate decreases and system reliability increases. Reliability growth models are used to estimate failure intensity, reliability, and mean time to failure based on observed failure data.
 
 2. Data preparation:The provided dataset (Failure Report 2) contains raw failure logs with failure times in seconds. However, C-SFRAT requires interval-based input data. Therefore, preprocessing was performed.
 
@@ -64,9 +64,13 @@ In conclusion, the GM model provided the best fit for the failure data and demon
 
 # Assessment Using Reliability Demonstration Chart 
 
+The Reliability Demonstration Chart (RDC) is used to evaluate whether the system under test (SUT) meets a specified reliability requirement in terms of Mean Time To Failure (MTTF). In the RDC, the vertical axis represents the cumulative number of failures (n), while the horizontal axis represents the normalized failure time (Tn​/MTTF). By plotting observed failure data on this chart, it is possible to determine whether the system falls within the Accept, Continue Test, or Reject regions under the chosen risk parameters.
+
 For Part 2, we used the same dataset as Part 1 (Failure Report 2), which contains 65 failures recorded over a total test time of 64,542 seconds (around 17.9 hours). 
 
-The RDC-11 tool accepts individual failure times as input, with a maximum of 16 data points. Since our dataset contains 65 failures, we chose 16 evenly-spaced representative failure observations to capture the full trend of the data. Our selected failure times were as indicated below.
+The RDC-11 tool accepts individual failure times as input, with a maximum of 16 data points. Since our dataset contains 65 failures, we selected 16 evenly spaced representative failure observations to capture the overall trend of the data. This approach preserves the distribution of failures across the entire testing duration while avoiding bias toward any specific portion of the dataset.
+
+Our selected failure times were as indicated below.
 
 | Observation | Cumulative Failure Time (s) |
 |---|---|
@@ -90,9 +94,10 @@ The RDC-11 tool accepts individual failure times as input, with a maximum of 16 
 The risk parameters were unchanged from their standard values. The Failure Intensity Objective (FIO) was adjusted by changing the "Per Number of Input Events" cell which controls the MTTF used for normalization. We calculated the normalized failure time (Tn) for each observation as:
 
     Tn = Failure Time × (Max Failures / Per Number of Input Events)
+ *This formula normalizes the failure times relative to the target MTTF, allowing the data to be plotted on the RDC.
+  By converting raw failure times into normalized values, the chart can consistently evaluate whether the observed failures meet the specified          reliability requirement.*
 
-
-MTTFmin is the minimum MTTF for when the SUT becomes acceptable. This means it is the MTTF where the last observed failure point just enters the Accept (green) region of the RDC. To determine this, we iteratively adjusted the "Per Number of Input Events" value until the last plotted point fell just within the Accept boundary. This occurred at:
+MTTFmin represents the largest MTTF value for which the system is still considered acceptable. This means that any increase beyond this value causes the failure points to move into the Continue Test or Reject regions, meaning the system no longer satisfies the reliability requirement. To determine this, we iteratively adjusted the "Per Number of Input Events" value until the last plotted point fell just within the Accept boundary. This occurred at:
 
 - Per Number of Input Events = 43,500
 - MTTFmin = 43,500 / 16 = 2,718.75 seconds = 0.755 hours
